@@ -16,11 +16,11 @@ st.title("Prédiction de classe pour un client")
 df=pd.read_csv('test_app.csv')
 list_clients=df['SK_ID_CURR']
 client_id = st.selectbox(
-    "selectionner le numero d'un client",
+    "selectionner le code d'un client",
     (list_clients))
 
-st.write('vous avez choisi:', client_id)
-st.write("le seuil de la classification est :",0.499)
+st.write('vous avez choisi : ', client_id)
+st.write("le seuil de la classification est : ",0.499)
 
 # Bouton pour effectuer la prédiction
 if st.button("Effectuer la prédiction"):
@@ -30,8 +30,8 @@ if st.button("Effectuer la prédiction"):
 
     if response.status_code == 200:
         prediction_result = response.json()
-        st.success(f"Classe prédite pour le client {client_id} : {prediction_result['predicted_class']}")
-        st.success(f"Score prédit pour le client {client_id} : {prediction_result['predicted_score']}")
+        st.success(f"Classe prédite  : {prediction_result['predicted_class']}")
+        st.success(f"Score prédit    : {prediction_result['predicted_score']}")
         if prediction_result['predicted_class'] == 0:
             st.markdown('<p style="color:green;font-size: 50px;">Crédit accepté</p>', unsafe_allow_html=True)  
         else:
