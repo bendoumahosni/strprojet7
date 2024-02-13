@@ -20,6 +20,7 @@ client_id = st.selectbox(
     (list_clients))
 
 st.write('vous avez choisi:', client_id)
+st.write("le seuil de la classification est :",0.499)
 
 # Bouton pour effectuer la prédiction
 if st.button("Effectuer la prédiction"):
